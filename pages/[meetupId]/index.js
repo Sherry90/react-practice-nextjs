@@ -15,6 +15,7 @@ const MeetupDefault = () => {
 
 export const getStaticPaths = async () => {
   return {
+    fallback: false,
     paths: [
       {
         params: {
