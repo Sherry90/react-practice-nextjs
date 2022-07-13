@@ -1,14 +1,12 @@
-import MeetupDetails from "../../components/meetups/MeetupDetails";
+import MeetupDetail from "../../components/meetups/MeetupDetail";
 
-const MeetupDefault = () => {
+const MeetupDetails = () => {
   return (
-    <MeetupDetails
-      image={
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/800px-Stadtbild_M%C3%BCnchen.jpg"
-      }
-      title={"A First Meetup"}
-      address={"Some Street 5, Some City"}
-      description={"The meetup description"}
+    <MeetupDetail
+      image="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/1280px-Stadtbild_M%C3%BCnchen.jpg"
+      title="First Meetup"
+      address="Some Street 5, Some City"
+      description="This is a first meetup"
     />
   );
 };
@@ -31,8 +29,10 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async (context) => {
-  const meetupId = context.params;
+export const getStaticProps = (context) => {
+  // fetch data for a single meetup
+
+  const meetupId = context.params.meetupId;
 
   console.log(meetupId);
 
@@ -40,14 +40,14 @@ export const getStaticProps = async (context) => {
     props: {
       meetupData: {
         image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/800px-Stadtbild_M%C3%BCnchen.jpg",
-        id: "m1",
-        title: "A First Meetup",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/1280px-Stadtbild_M%C3%BCnchen.jpg",
+        id: meetupId,
+        title: "First Meetup",
         address: "Some Street 5, Some City",
-        description: "The meetup description",
+        description: "This is a first meetup",
       },
     },
   };
 };
 
-export default MeetupDefault;
+export default MeetupDetails;
